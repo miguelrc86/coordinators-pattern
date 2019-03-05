@@ -23,6 +23,7 @@
 		81869219222E26DF004B070A /* KanjiDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81869218222E26DF004B070A /* KanjiDetailViewController.xib */; };
 		8186921B222E287F004B070A /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186921A222E287F004B070A /* ApplicationCoordinator.swift */; };
 		8186921D222E2B5D004B070A /* AllKanjiListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186921C222E2B5D004B070A /* AllKanjiListCoordinator.swift */; };
+		9BA897E5222EDD8A007F3ABB /* KanjiDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA897E4222EDD8A007F3ABB /* KanjiDetailCoordinator.swift */; };
 		C1345B051F9E08BA00612B82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1345B041F9E08BA00612B82 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		81869218222E26DF004B070A /* KanjiDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KanjiDetailViewController.xib; sourceTree = "<group>"; };
 		8186921A222E287F004B070A /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		8186921C222E2B5D004B070A /* AllKanjiListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllKanjiListCoordinator.swift; sourceTree = "<group>"; };
+		9BA897E4222EDD8A007F3ABB /* KanjiDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiDetailCoordinator.swift; sourceTree = "<group>"; };
 		C1345AFA1F9E08BA00612B82 /* KanjiList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KanjiList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1345B041F9E08BA00612B82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +130,7 @@
 				81869214222E257F004B070A /* Coordinator.swift */,
 				8186921A222E287F004B070A /* ApplicationCoordinator.swift */,
 				8186921C222E2B5D004B070A /* AllKanjiListCoordinator.swift */,
+				9BA897E4222EDD8A007F3ABB /* KanjiDetailCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81869215222E257F004B070A /* Coordinator.swift in Sources */,
+				9BA897E5222EDD8A007F3ABB /* KanjiDetailCoordinator.swift in Sources */,
 				4323D3E01FAD0CF600F0FB1E /* WordExampleTableViewCell.swift in Sources */,
 				4323D3E41FAD110200F0FB1E /* KanjiDataTableViewCell.swift in Sources */,
 				4372643E1FAD04F400A22393 /* AppDelegate.swift in Sources */,

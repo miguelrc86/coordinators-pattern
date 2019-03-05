@@ -28,6 +28,10 @@
 
 import UIKit
 
+protocol KanjiListViewControllerDelegate: AnyObject {
+    func kanjiListViewControllerDidSelectKanji(selectedKanji: Kanji)
+}
+
 class KanjiListViewController: UIViewController {
     
     @IBOutlet weak var kanjiListTableView: UITableView! {
@@ -37,33 +41,15 @@ class KanjiListViewController: UIViewController {
         }
     }
     
-    var kanjiList: [Kanji] = KanjiStorage.sharedStorage.allKanji() {
+    weak var delegate: KanjiListViewControllerDelegate?
+    
+    var kanjiList = [Kanji]() {
         didSet {
             kanjiListTableView?.reloadData()
         }
     }
     
-    var shouldOpenDetailsOnCellSelection = true
-    
-    var word: String? {
-        didSet {
-            guard let word = word else {
-                return
-            }
-            kanjiList = KanjiStorage.sharedStorage.kanjiForWord(word)
-            title = word
-        }
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailKanjiViewControler = segue.destination as? KanjiDetailViewController,
-            let kanji = sender as? Kanji else{
-                return
-        }
-        detailKanjiViewControler.selectedKanji = kanji
-    }
-    
+    var cellAccessoryType = UITableViewCell.AccessoryType.disclosureIndicator
 }
 
 extension KanjiListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -82,21 +68,14 @@ extension KanjiListViewController: UITableViewDataSource, UITableViewDelegate {
         let kanji = kanjiList[indexPath.row]
         cell.textLabel?.text = kanji.character
         cell.detailTextLabel?.text = kanji.meaning
-        cell.accessoryType = shouldOpenDetailsOnCellSelection ? .disclosureIndicator : .none
+        cell.accessoryType = cellAccessoryType
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        defer {
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
-        
-        guard shouldOpenDetailsOnCellSelection == true else {
-            return
-        }
         let kanji = kanjiList[indexPath.row]
-        performSegue(withIdentifier: "KanjiDetail", sender: kanji)
+        delegate?.kanjiListViewControllerDidSelectKanji(selectedKanji: kanji)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

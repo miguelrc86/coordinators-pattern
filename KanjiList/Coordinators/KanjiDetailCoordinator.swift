@@ -28,36 +28,39 @@
 
 import UIKit
 
-class AllKanjiListCoordinator: Coordinator {
+class KanjiDetailCoordinator: Coordinator {
     
     private let presenter: UINavigationController
-    private let allKanjiList: [Kanji]
-    private var kanjiListViewController: KanjiListViewController?
+    private var kanjiDetailController: KanjiDetailViewController!
+    private var wordKanjiListController: KanjiListViewController?
     private let kanjiStorage: KanjiStorage
-    private var kanjiDetailCoordinator: KanjiDetailCoordinator?
+    private let selectedKanji: Kanji
     
-    init(presenter: UINavigationController, kanjiStorage: KanjiStorage) {
+    init(presenter: UINavigationController, selectedKanji: Kanji, kanjiStorage: KanjiStorage) {
+        self.selectedKanji = selectedKanji
         self.presenter = presenter
         self.kanjiStorage = kanjiStorage
-        allKanjiList = kanjiStorage.allKanji()
     }
     
     func start() {
-        let kanjiListViewController = KanjiListViewController(nibName: nil, bundle: nil)
-        kanjiListViewController.delegate = self
-        kanjiListViewController.title = "Kanji List"
-        kanjiListViewController.kanjiList = allKanjiList
-        self.kanjiListViewController = kanjiListViewController
-        
-        presenter.pushViewController(kanjiListViewController, animated: true)
+        kanjiDetailController = KanjiDetailViewController(nibName: nil, bundle: nil)
+        kanjiDetailController.delegate = self
+        kanjiDetailController.title = "Kanji Details"
+        kanjiDetailController.selectedKanji = selectedKanji
+        presenter.pushViewController(kanjiDetailController, animated: true)
     }
 }
 
-extension AllKanjiListCoordinator: KanjiListViewControllerDelegate {
+extension KanjiDetailCoordinator: KanjiDetailViewControllerDelegate {
     
-    func kanjiListViewControllerDidSelectKanji(selectedKanji: Kanji) {
-        kanjiDetailCoordinator = KanjiDetailCoordinator(presenter: presenter, selectedKanji: selectedKanji, kanjiStorage: kanjiStorage)
-        kanjiDetailCoordinator?.start()
+    func kanjiDetalViewDidSelectWord(word: String) {
+        let wordKanjiListController = KanjiListViewController(nibName: nil, bundle: nil)
+        wordKanjiListController.cellAccessoryType = .none
+        self.wordKanjiListController = wordKanjiListController
+        let kanjiForWord = kanjiStorage.kanjiForWord(word)
+        wordKanjiListController.kanjiList = kanjiForWord
+        wordKanjiListController.title = word
+        presenter.pushViewController(wordKanjiListController, animated: true)
     }
     
 }

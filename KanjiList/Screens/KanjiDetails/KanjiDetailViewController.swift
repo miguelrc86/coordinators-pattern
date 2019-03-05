@@ -29,6 +29,9 @@
 import Foundation
 import UIKit
 
+protocol KanjiDetailViewControllerDelegate: AnyObject {
+    func kanjiDetalViewDidSelectWord(word: String)
+}
 
 class KanjiDetailViewController: UIViewController {
     
@@ -39,6 +42,8 @@ class KanjiDetailViewController: UIViewController {
             }
         }
     }
+    
+    weak var delegate: KanjiDetailViewControllerDelegate?
     
     @IBOutlet weak var detailTableView: UITableView? {
         didSet {
@@ -54,18 +59,6 @@ class KanjiDetailViewController: UIViewController {
             let detailCellNib = UINib(nibName: "KanjiDataTableViewCell", bundle: nil)
             detailTableView.register(detailCellNib, forCellReuseIdentifier: "KanjiDataTableViewCell")
         }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        guard let listViewController = segue.destination as? KanjiListViewController else {
-            
-            return
-        }
-        
-        listViewController.shouldOpenDetailsOnCellSelection = false
-        listViewController.word = sender as? String
     }
     
 }
@@ -119,16 +112,17 @@ extension KanjiDetailViewController: UITableViewDataSource {
 extension KanjiDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        guard indexPath.section == 1 else {
-            return
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
         }
         
-        if let word = selectedKanji?.examples[indexPath.row].word {
-            performSegue(withIdentifier: "exampleKanjiList", sender: word)
+        guard
+            indexPath.section == 1,
+            let word = selectedKanji?.examples[indexPath.row].word else {
+                return
         }
         
-        tableView.deselectRow(at: indexPath, animated: true)
+        delegate?.kanjiDetalViewDidSelectWord(word: word)
     }
     
 }
