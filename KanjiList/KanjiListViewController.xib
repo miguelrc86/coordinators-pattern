@@ -10,32 +10,30 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
-        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <viewController id="TXM-Wo-W07" customClass="KanjiListViewController" customModule="KanjiList" customModuleProvider="target">
-            <view key="view" contentMode="scaleToFill" id="8zt-ld-KWc">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                <subviews>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Yn-lD-NjY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </tableView>
-                </subviews>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                <constraints>
-                    <constraint firstItem="9Yn-lD-NjY" firstAttribute="leading" secondItem="ur3-sS-k2d" secondAttribute="leading" id="JC4-1c-wKm"/>
-                    <constraint firstAttribute="bottom" secondItem="9Yn-lD-NjY" secondAttribute="bottom" id="JSC-gt-3Qi"/>
-                    <constraint firstItem="9Yn-lD-NjY" firstAttribute="trailing" secondItem="ur3-sS-k2d" secondAttribute="trailing" id="Rft-nv-LEA"/>
-                    <constraint firstItem="9Yn-lD-NjY" firstAttribute="top" secondItem="8zt-ld-KWc" secondAttribute="top" id="tfl-3U-w8e"/>
-                </constraints>
-                <viewLayoutGuide key="safeArea" id="ur3-sS-k2d"/>
-            </view>
-            <navigationItem key="navigationItem" title="Kanji list" id="9eg-LC-jFr"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KanjiListViewController" customModule="KanjiList" customModuleProvider="target">
             <connections>
-                <outlet property="kanjiListTableView" destination="9Yn-lD-NjY" id="19g-x6-LTX"/>
+                <outlet property="kanjiListTableView" destination="SNm-Dp-beH" id="lkL-aI-zFA"/>
+                <outlet property="view" destination="Bci-gK-8Lk" id="eut-i1-1Yo"/>
             </connections>
-            <point key="canvasLocation" x="154" y="54"/>
-        </viewController>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Bci-gK-8Lk">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SNm-Dp-beH">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="SNm-Dp-beH" firstAttribute="trailing" secondItem="Ffl-fF-S3N" secondAttribute="trailing" id="1Zo-ZZ-vFz"/>
+                <constraint firstAttribute="bottom" secondItem="SNm-Dp-beH" secondAttribute="bottom" id="Jwg-kd-6tB"/>
+                <constraint firstItem="SNm-Dp-beH" firstAttribute="leading" secondItem="Ffl-fF-S3N" secondAttribute="leading" id="NLf-8Q-Rjo"/>
+                <constraint firstItem="SNm-Dp-beH" firstAttribute="top" secondItem="Bci-gK-8Lk" secondAttribute="top" id="zjO-Ma-Csu"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Ffl-fF-S3N"/>
+        </view>
     </objects>
 </document>
